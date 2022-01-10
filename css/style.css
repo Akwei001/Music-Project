@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+body {
+  background-color: #cccccc;
+  text-align: center;
+  font-family: 'roboto', sans-serif;
+}
+
+audio {
+  display: block;
+  margin: 20px auto;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: #ff5500;
+}
+
+#upload-form {
+  background-color: red;
+}

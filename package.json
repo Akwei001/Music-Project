@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "aws-amplify": "^4.3.11",
+    "chokidar": "^3.5.2",
+    "core-js": "^3.20.1"
+  },
+  "name": "online-music-collection",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html",
+    "build": "build index.html "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-preset-env": "^1.7.0",
+    "parcel-bundler": "^1.12.5"
+  }
+}

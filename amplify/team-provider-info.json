@@ -1,0 +1,21 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-omc-dev-204848-authRole",
+      "UnauthRoleArn": "arn:aws:iam::258221598975:role/amplify-omc-dev-204848-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::258221598975:role/amplify-omc-dev-204848-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-omc-dev-204848-deployment",
+      "UnauthRoleName": "amplify-omc-dev-204848-unauthRole",
+      "StackName": "amplify-omc-dev-204848",
+      "StackId": "arn:aws:cloudformation:eu-west-2:258221598975:stack/amplify-omc-dev-204848/e56370b0-69b1-11ec-9e12-061c732917b2",
+      "AmplifyAppId": "dsv1alcklkt45"
+    },
+    "categories": {
+      "auth": {
+        "omcf7207adb": {},
+        "true": {}
+      }
+    }
+  }
+}
