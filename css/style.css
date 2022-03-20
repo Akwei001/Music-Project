@@ -1,9 +1,91 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: #cccccc;
+  display: grid;
+  place-items: center;
   text-align: center;
   font-family: 'roboto', sans-serif;
+}
+.music-container {
+  position: relative;
+  width: 400px;
+  height: 550px;
+  border-radius: 18px;
+  background: #566573;
+  overflow: hidden;
+}
+
+.music-container .block {
+  margin-top: 20px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.music-container .block .shape {
+  height: 180px;
+  width: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0.1px 4px 8px 2px rgba(0, 0, 0, 0.1);
+}
+
+.music-container .player {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.music-container .main .track-info {
+  height: 100px;
+  width: 100px;
+
+  overflow: hidden;
+  box-shadow: 0.1px 4px 8px 2px rgba(0, 0, 0, 0.1);
+}
+
+.music-container .main {
+  margin-top: 20px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.music-container .main .player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.music-container .main .player button {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  font-size: 30px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 18px;
+  background: rgba(0, 0, 0, 0.08);
+  box-shadow: 0.1px 8px 8px 2px rgba(0, 0, 0, 0.2);
 }
 
 audio {
@@ -16,5 +98,10 @@ audio::-webkit-media-controls-panel {
 }
 
 #upload-form {
-  background-color: red;
+  background-color: whitesmoke;
+}
+
+.tracklist {
+  list-style: none;
+  background-color: white;
 }

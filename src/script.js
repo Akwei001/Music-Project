@@ -5,37 +5,50 @@ Amplify.configure(awsconfig);
 
 //Storage.configure({ level: 'public' });
 
+//Get All tracks
+
+const getAllTracks = (track) => {
+  // Get the track from S3
+  Storage.get(track).then(() => {
+    console.log(track);
+  });
+};
+
+//getAllTracks();
+
+console.log(getAllTracks());
 //Display tracks on screen
 
 let tracklist = document.querySelector('.tracklist');
 
-const list = (track) => {
-  Storage.get(track.key).then(() => {
-    //console.log(result);
-    let newListItem = document.createElement('li');
-    newListItem.innerText = track.key;
-    tracklist.appendChild(newListItem);
-  });
-};
-const createAudioPlayer = (track) => {
-  // Get the track from S3
-  Storage.get(track.key).then((result) => {
-    //console.log(track.key);
-    // create an audio element and add a source element to it
-    const audio = document.createElement('audio');
-    const source = document.createElement('source');
+// const list = (track) => {
+//   Storage.get(track.key).then(() => {
+//     console.log(track);
+//     // let newListItem = document.createElement('li');
+//     // newListItem.innerText = track.key;
+//     // tracklist.appendChild(newListItem);
+//   });
+// };
 
-    audio.appendChild(source);
-    // add controls to the audio element
-    audio.setAttribute('controls', '');
-    audio.setAttribute('volume', '');
-    // add the track source and type
-    source.setAttribute('src', result);
-    source.setAttribute('type', 'audio/mpeg');
-    // add the item to the page
-    document.querySelector('.tracks').appendChild(audio);
-  });
-};
+// const createAudioPlayer = (track) => {
+//   // Get the track from S3
+//   Storage.get(track.key).then((result) => {
+//     //console.log(track.key);
+//     // create an audio element and add a source element to it
+//     const audio = document.createElement('audio');
+//     const source = document.createElement('source');
+
+//     audio.appendChild(source);
+//     // add controls to the audio element
+//     audio.setAttribute('controls', '');
+//     audio.setAttribute('volume', '');
+//     // add the track source and type
+//     source.setAttribute('src', result);
+//     source.setAttribute('type', 'audio/mpeg');
+//     // add the item to the page
+//     document.querySelector('.tracks').appendChild(audio);
+//   });
+// };
 
 // select the upload form we created, and listen for a submit event on it
 document.getElementById('upload-form').addEventListener('submit', (e) => {
@@ -57,11 +70,11 @@ document.getElementById('upload-form').addEventListener('submit', (e) => {
     .catch((err) => console.error(err));
 });
 
-Storage.list('')
-  .then((result) => {
-    result.forEach((item) => createAudioPlayer(item));
-  })
-  .catch((err) => console.error(err));
+// Storage.list('')
+//   .then((result) => {
+//     result.forEach((item) => createAudioPlayer(item));
+//   })
+//   .catch((err) => console.error(err));
 
 Storage.list('').then((result) => {
   result.forEach((item) => list(item));
