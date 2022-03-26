@@ -21,14 +21,14 @@ console.log(getAllTracks());
 
 let tracklist = document.querySelector('.tracklist');
 
-// const list = (track) => {
-//   Storage.get(track.key).then(() => {
-//     console.log(track);
-//     // let newListItem = document.createElement('li');
-//     // newListItem.innerText = track.key;
-//     // tracklist.appendChild(newListItem);
-//   });
-// };
+const list = (track) => {
+  Storage.get(track.key).then(() => {
+    console.log(track);
+    let newListItem = document.createElement('li');
+    newListItem.innerText = track.key;
+    tracklist.appendChild(newListItem);
+  });
+};
 
 // const createAudioPlayer = (track) => {
 //   // Get the track from S3
@@ -79,3 +79,7 @@ document.getElementById('upload-form').addEventListener('submit', (e) => {
 Storage.list('').then((result) => {
   result.forEach((item) => list(item));
 });
+
+function open_list() {
+  tracklist.classList.toggle('active');
+}

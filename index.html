@@ -9,11 +9,20 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
     />
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <h1>Online Music Player</h1>
-    <div class="Music-container">
-      <div class="topbar"></div>
+    <div class="music-container active">
+      <div class="topbar">
+        <button onclick="open_list()">
+          <i class="bx bx-menu-alt-left"></i>
+        </button>
+      </div>
+      <ul class="tracklist"></ul>
       <div class="block">
         <div class="shape"></div>
       </div>
@@ -48,8 +57,16 @@
         <input type="submit" value="Upload" />
       </div>
     </form>
-    <ul class="tracklist"></ul>
+
     <div class="tracks"></div>
     <script src="./src/script.js"></script>
+    <script>
+      let tracklist = document.querySelector('.tracklist');
+
+      function open_list() {
+        console.log('i was clicked');
+        tracklist.classList.toggle('active');
+      }
+    </script>
   </body>
 </html>
