@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
 
+@font-face {
+  font-family: 'ChicagoFont';
+  src: url('https://dangasson.github.io/Resources/Fonts/ChicagoFLF.ttf')
+    format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,20 +15,33 @@
 }
 
 body {
-  background-color: #cccccc;
+  background-color: white;
   display: grid;
   place-items: center;
   text-align: center;
-  font-family: 'roboto', sans-serif;
+  font-family: 'ChicagoFont', sans-serif;
 }
 .music-container {
   position: relative;
-  width: 400px;
+  width: 375px;
   height: 550px;
   border-radius: 18px;
   background: white;
   overflow: hidden;
-  box-shadow: 0.1px 4px 8px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0.1px 4px 8px 2px rgba(0, 0, 0.5, 0.5),
+    inset 0vw 0vw 1.25vw 0.15vw;
+}
+
+.tracklist button {
+}
+
+.block .screen button {
+  display: flex;
+  border: none;
+  background: none;
+  text-decoration: none;
+  font: inherit;
+  margin: 5px;
 }
 
 .music-container .block {
@@ -32,30 +53,42 @@ body {
   flex-direction: column;
 }
 
-.music-container .block .shape {
-  height: 180px;
-  width: 280px;
+.music-container .block .screen {
+  position: relative;
+  margin: 30px auto 0px auto;
+  width: 284px;
+  height: 230px;
+  background: linear-gradient(135deg, #a5a59b, #d6d5d0);
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 10px 2px #4d4d4d;
+  font-family: 'ChicagoFont', 'Arial';
+  font-size: 100%;
+  color: #484647;
+}
+
+/* .music-container .block .shape {
+  height: 200px;
+  width: 320px;
   border-radius: 10%;
   border: 2px solid #000;
   overflow: hidden;
-  background-color: #a8c64e;
+  background-color: #a5a59b;
   box-shadow: inset 0.1px 4px 8px 2px rgba(0, 0, 0, 0.5);
-}
+} */
 
 .music-container .player {
   margin-top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 100%;
 }
 
 .music-container .main .track-info {
-  height: 100px;
-  width: 100px;
-
+  height: 30px;
+  width: 300px;
   overflow: hidden;
+  visibility: hidden;
   box-shadow: 0.1px 4px 8px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -79,7 +112,6 @@ body {
   height: 55px;
   width: 55px;
   border-radius: 50%;
-
   font-size: 30px;
   border: none;
   outline: none;
@@ -88,13 +120,14 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0 18px;
-  background: rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.01);
   box-shadow: inset 0.1px 8px 8px 2px rgba(0, 0, 0, 0.2);
 }
 
 .music-container .main .player .action-btn {
-  color: orangered;
+  color: black;
   border: 1px solid rgba(0, 0, 0, 0.08);
+  margin: 10%;
 }
 
 #upload-form {
@@ -123,7 +156,7 @@ body {
   z-index: 10;
   width: 95%;
   height: 95%;
-  background: white;
+
   max-height: 0px;
   overflow: scroll;
   transition: 0.5s;
@@ -141,8 +174,15 @@ body {
   border-radius: 10px;
   transition: 0.5s;
   cursor: pointer;
+  margin: 10px;
   padding: 12px 12px 20px 12px;
-  box-shadow: 0.1px 8px 8px 2px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0.1px 8px 8px 2px rgba(0, 0, 0, 0.1); */
+  background: linear-gradient(135deg, #a5a59b, #d6d5d0);
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 10px 2px #4d4d4d;
+  font-family: 'ChicagoFont', 'Arial';
+  font-size: 100%;
+  color: #484647;
 }
 
 .music-container .active {
