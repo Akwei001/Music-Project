@@ -35,8 +35,13 @@ body {
 .tracklist button {
 }
 
-.block .screen button {
+.block .screen .nav {
   display: flex;
+
+  justify-content: space-between;
+}
+
+.block .screen .nav button {
   border: none;
   background: none;
   text-decoration: none;

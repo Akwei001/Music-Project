@@ -3,27 +3,88 @@ import awsconfig from './aws-exports';
 
 Amplify.configure(awsconfig);
 
+const musicContainer = document.getElementById('music-container');
+const playBtn = document.getElementById('play');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+
 //Storage.configure({ level: 'public' });
 
 //Get All tracks
-
+let trackArray = [];
 const getAllTracks = (track) => {
   // Get the track from S3
-  Storage.get(track).then(() => {
-    console.log(track);
+
+  Storage.get(track.key).then(() => {
+    //console.log(track);
+    trackArray.push(track);
+    // console.log(trackArray);
+    // console.log(newtrackArray);
+
+    // return newtrackArray;
   });
 };
 
-//getAllTracks();
+console.log(trackArray);
 
-console.log(getAllTracks());
+//Load tracks
+const audio = document.createElement('audio');
+let trackIndex = 1;
+
+function loadTrack(trackIndex) {
+  audio.src = trackArray[trackIndex];
+
+  audio.load();
+}
+
+loadTrack(trackIndex);
+
+console.log(loadTrack(trackIndex));
+
+//let Playing_song = false;
+//play Track
+function playTrack() {
+  audio.play();
+  // Playing_song = true;
+  play.innerHTML = '<i class="fa fa-pause" aria-hidden="true"></i>';
+}
+
+//pause song
+// function pauseSong() {
+//   audio.pause();
+//   // Playing_song = false;
+//   play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
+// }
+
+// checking.. the song is playing or not
+// function justplay() {
+//   if (Playing_song == false) {
+//     playTrack();
+//   } else {
+//     pauseSong();
+//   }
+// }
+
+//Event Listeners
+playBtn.addEventListener('click', () => {
+  // const isPlaying = music-container.classList.contains('play');
+  console.log('play clicked');
+  playTrack();
+
+  // if (isPlaying) {
+  //   pauseSong();
+  // } else {
+  //   playTrack();
+  // }
+});
+
 //Display tracks on screen
 
 let tracklist = document.querySelector('.tracklist');
 
 const list = (track) => {
   Storage.get(track.key).then(() => {
-    console.log(track);
+    // console.log(track);
     let newListItem = document.createElement('li');
     newListItem.innerText = track.key;
     tracklist.appendChild(newListItem);
@@ -31,9 +92,7 @@ const list = (track) => {
 };
 
 // const createAudioPlayer = (track) => {
-//   // Get the track from S3
-//   Storage.get(track.key).then((result) => {
-//     //console.log(track.key);
+
 //     // create an audio element and add a source element to it
 //     const audio = document.createElement('audio');
 //     const source = document.createElement('source');
@@ -47,8 +106,7 @@ const list = (track) => {
 //     source.setAttribute('type', 'audio/mpeg');
 //     // add the item to the page
 //     document.querySelector('.tracks').appendChild(audio);
-//   });
-// };
+//   }
 
 // select the upload form we created, and listen for a submit event on it
 document.getElementById('upload-form').addEventListener('submit', (e) => {
@@ -76,10 +134,18 @@ document.getElementById('upload-form').addEventListener('submit', (e) => {
 //   })
 //   .catch((err) => console.error(err));
 
+Storage.list('')
+  .then((result) => {
+    result.forEach((item) => getAllTracks(item));
+  })
+  .catch((err) => console.error(err));
+
 Storage.list('').then((result) => {
   result.forEach((item) => list(item));
 });
 
-function open_list() {
-  tracklist.classList.toggle('active');
-}
+// Event listeners
+
+// function open_list() {
+//   tracklist.classList.toggle('active');
+// }

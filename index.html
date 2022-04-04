@@ -18,13 +18,15 @@
     <h1></h1>
     <div class="music-container active">
       <ul class="tracklist">
-        <button onclick="open_list()">
-          <i class="bx bx-menu-alt-left"></i>
-        </button>
+        <button onclick="open_list()">Close</button>
       </ul>
       <div class="block">
         <div class="screen">
-          <button onclick="open_list()">Menu</button>
+          <div class="nav">
+            <button onclick="open_list()">Menu</button>
+            <button onclick="open_list()">Upload</button>
+          </div>
+
           <p></p>
           <p></p>
         </div>
@@ -39,13 +41,13 @@
         </div>
         <div class="player">
           <button id="prev" class="action-btn">
-            <i class="fas fa-backward"></i>
+            <i class="fas fa-backward" aria-hidden="true"></i>
           </button>
           <button id="play" class="action-btn action-btn-big">
-            <i class="fas fa-play"></i>
+            <i class="fas fa-play" aria-hidden="true"></i>
           </button>
           <button id="next" class="action-btn">
-            <i class="fas fa-forward"></i>
+            <i class="fas fa-forward" aria-hidden="true"></i>
           </button>
         </div>
       </div>
@@ -67,6 +69,14 @@
         console.log('i was clicked');
         tracklist.classList.toggle('active');
       }
+
+      // function justplay() {
+      //   if (Playing_song == false) {
+      //     playTrack();
+      //   } else {
+      //     pausesong();
+      //   }
+      // }
     </script>
   </body>
 </html>
