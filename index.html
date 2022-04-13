@@ -16,7 +16,7 @@
   </head>
   <body>
     <h1></h1>
-    <div class="music-container active">
+    <div class="music-container" id="music-container">
       <div class="test"></div>
       <ul class="tracklist">
         <button onclick="open_list()">Close</button>
@@ -40,6 +40,13 @@
             <p>0:00</p>
           </div>
         </div>
+
+        <audio
+          src="setupSongs/ukulele.mp3"
+          type="audio/mpeg"
+          id="audio"
+        ></audio>
+
         <div class="player">
           <button id="prev" class="action-btn">
             <i class="fas fa-backward" aria-hidden="true"></i>
@@ -62,7 +69,7 @@
     </form>
 
     <div class="tracks"></div>
-    <script src="./src/script.js"></script>
+
     <script>
       let tracklist = document.querySelector('.tracklist');
 
@@ -70,14 +77,8 @@
         console.log('i was clicked');
         tracklist.classList.toggle('active');
       }
-
-      // function justplay() {
-      //   if (Playing_song == false) {
-      //     playTrack();
-      //   } else {
-      //     pausesong();
-      //   }
-      // }
     </script>
+
+    <script src="./src/script.js"></script>
   </body>
 </html>

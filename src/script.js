@@ -1,15 +1,50 @@
-import Amplify, { Storage } from 'aws-amplify';
-import awsconfig from './aws-exports';
+// import Amplify, { Storage } from 'aws-amplify';
+// import awsconfig from './aws-exports';
 
-Amplify.configure(awsconfig);
+// Amplify.configure(awsconfig);
 
-const musicContainer = document.querySelector('.music-container');
+const musicContainer = document.getElementById('music-container');
 const playBtn = document.getElementById('play');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
+const audio = document.getElementById('audio');
+
 //const audio = document.createElement('audio');
 
 //Storage.configure({ level: 'public' });
+
+// Song titles
+//const songs = ['hey', 'summer', 'ukulele'];
+
+//
+
+const testSongs = [
+  'ukulele',
+  'Halogenix - Edits Vol. 1 - 01 GIVĒON - Favourite Mistake -Halogenix Edit-',
+  'Halogenix - Edits Vol. 1 - 02 Brent Faiyaz - Circles -Halogenix Edit-',
+  'Halogenix - Edits Vol. 1 - 03 San Holo - Always On My Mind (ft. James Vincent McMorrow & Yvette Young) -Halogenix Edit-',
+  'Halogenix - Edits Vol. 1 - 04 Khruangbin - First Class -Halogenix Edit-',
+];
+
+// Keep track of song
+let songIndex = 1;
+
+// Initially load song details into DOM
+
+console.log(testSongs[0]);
+
+loadSong(testSongs[songIndex]);
+
+console.log(loadSong);
+
+// Update song details
+function loadSong(song) {
+  //title.innerText = song;
+  audio.src = `setupSongs/${song}.mp3`;
+  //audio.src.setAttribute('type', 'audio/mpeg');
+  console.log(audio.src);
+  //cover.src = `images/${song}.jpg`;
+}
 
 // //Get All tracks
 // let trackArray = [];
@@ -52,19 +87,47 @@ function playTrack() {
   musicContainer.classList.add('play');
   playBtn.querySelector('i.fas').classList.remove('fa-play');
   playBtn.querySelector('i.fas').classList.add('fa-pause');
-
+  console.log('does this function work');
+  console.log(audio.play());
   audio.play();
+
   // Playing_song = true;
 }
 
-// //pause song
-// function pauseSong() {
-//   musicContainer.classList.remove('play');
-//   playBtn.querySelector('i.fas').classList.add('fa-play');
-//   playBtn.querySelector('i.fas').classList.remove('fa-pause');
+//pause song
+function pauseSong() {
+  musicContainer.classList.remove('play');
+  playBtn.querySelector('i.fas').classList.add('fa-play');
+  playBtn.querySelector('i.fas').classList.remove('fa-pause');
 
-//   audio.pause();
-// }
+  audio.pause();
+}
+
+// Previous song
+function prevSong() {
+  songIndex--;
+
+  if (songIndex < 0) {
+    songIndex = testSongs.length - 1;
+  }
+
+  loadSong(testSongs[songIndex]);
+
+  playTrack();
+}
+
+// Next song
+function nextSong() {
+  songIndex++;
+
+  if (songIndex > testSongs.length - 1) {
+    songIndex = 0;
+  }
+
+  loadSong(testSongs[songIndex]);
+
+  playTrack();
+}
 
 // // checking.. the song is playing or not
 // // function justplay() {
@@ -77,51 +140,53 @@ function playTrack() {
 
 // //Event Listeners
 
-// // let isPlaying = musicContainer.classList.contains('play');
-
-// // let isPlaying = false;
+//isPlaying = false;
 
 playBtn.addEventListener('click', () => {
-  //const isPlaying = musicContainer.classList.contains('play');
+  let isPlaying = musicContainer.classList.contains('play');
   console.log('play clicked');
   playTrack();
 
-  // if (isPlaying) {
-  //   pauseSong();
-  // } else {
-  //   playTrack();
-  // }
+  if (isPlaying) {
+    pauseSong();
+  } else {
+    playTrack();
+  }
 });
+
+// Change song
+prevBtn.addEventListener('click', prevSong);
+nextBtn.addEventListener('click', nextSong);
 
 //Display tracks on screen
 
-let tracklist = document.querySelector('.tracklist');
+//let tracklist = document.querySelector('.tracklist');
 
-const List = (track) => {
-  Storage.get(track.key).then(() => {
-    // console.log(track);
-    let newListItem = document.createElement('li');
-    newListItem.innerText = track.key;
-    tracklist.appendChild(newListItem);
-  });
-};
+// const List = (track) => {
+//   Storage.get(track.key).then(() => {
+//     // console.log(track);
+//     let newListItem = document.createElement('li');
+//     newListItem.innerText = track.key;
+//     tracklist.appendChild(newListItem);
+//   });
+// };
 
-const createNewAudio = (track) => {
-  Storage.get(track.key).then((result) => {
-    // console.log(result);
-    console.log(track.key);
-    const audio = document.createElement('audio');
-    const source = document.createElement('source');
-    audio.appendChild(source);
-    //  add the track source and type
-    source.setAttribute('src', result);
-    console.log(track.key);
-    source.setAttribute('type', 'audio/mpeg');
-    audio.setAttribute('controls', '');
-    // add the item to the page
-    document.querySelector('.test').appendChild(audio);
-  });
-};
+// const createNewAudio = (track) => {
+//   Storage.get(track.key).then((result) => {
+//     // console.log(result);
+//     console.log(track.key);
+//     const audio = document.createElement('audio');
+//     const source = document.createElement('source');
+//     audio.appendChild(source);
+//     //  add the track source and type
+//     source.setAttribute('src', result);
+//     console.log(track.key);
+//     source.setAttribute('type', 'audio/mpeg');
+//     audio.setAttribute('controls', '');
+//     // add the item to the page
+//     document.querySelector('.test').appendChild(audio);
+//   });
+// };
 
 // const createAudioPlayer = (track) => {
 //   // Get the track from S3
@@ -168,20 +233,22 @@ document.getElementById('upload-form').addEventListener('submit', (e) => {
 //   })
 //   .catch((err) => console.error(err));
 
-Storage.list('').then((result) => {
-  result.forEach((item) => List(item));
-});
+//Correct code for tracklist
 
-Storage.list('').then((result) => {
-  createNewAudio(
-    result.map(() => {
-      [];
-    })
-  );
-  console.log(result[1].key);
-});
+// Storage.list('').then((result) => {
+//   result.forEach((item) => List(item));
+// });
 
-console.log(createNewAudio);
+// Storage.list('').then((result) => {
+//   createNewAudio(
+//     result.map(() => {
+//       [];
+//     })
+//   );
+//   console.log(result[1].key);
+// });
+
+//console.log(createNewAudio);
 // let Trackresult = [];
 // console.log(Trackresult);
 // // let finalResult = [];
