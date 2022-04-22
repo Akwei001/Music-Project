@@ -1,50 +1,50 @@
-// import Amplify, { Storage } from 'aws-amplify';
-// import awsconfig from './aws-exports';
+import Amplify, { Storage } from 'aws-amplify';
+import awsconfig from './aws-exports';
 
-// Amplify.configure(awsconfig);
+Amplify.configure(awsconfig);
 
-const musicContainer = document.getElementById('music-container');
-const playBtn = document.getElementById('play');
-const prevBtn = document.getElementById('prev');
-const nextBtn = document.getElementById('next');
-const audio = document.getElementById('audio');
+// const musicContainer = document.getElementById('music-container');
+// const playBtn = document.getElementById('play');
+// const prevBtn = document.getElementById('prev');
+// const nextBtn = document.getElementById('next');
+// const audio = document.getElementById('audio');
 
-//const audio = document.createElement('audio');
+// //const audio = document.createElement('audio');
 
-//Storage.configure({ level: 'public' });
+// //Storage.configure({ level: 'public' });
 
-// Song titles
-//const songs = ['hey', 'summer', 'ukulele'];
+// // Song titles
+// //const songs = ['hey', 'summer', 'ukulele'];
 
-//
+// //
 
-const testSongs = [
-  'ukulele',
-  'Halogenix - Edits Vol. 1 - 01 GIVĒON - Favourite Mistake -Halogenix Edit-',
-  'Halogenix - Edits Vol. 1 - 02 Brent Faiyaz - Circles -Halogenix Edit-',
-  'Halogenix - Edits Vol. 1 - 03 San Holo - Always On My Mind (ft. James Vincent McMorrow & Yvette Young) -Halogenix Edit-',
-  'Halogenix - Edits Vol. 1 - 04 Khruangbin - First Class -Halogenix Edit-',
-];
+// const testSongs = [
+//   'ukulele',
+//   'Halogenix - Edits Vol. 1 - 01 GIVĒON - Favourite Mistake -Halogenix Edit-',
+//   'Halogenix - Edits Vol. 1 - 02 Brent Faiyaz - Circles -Halogenix Edit-',
+//   'Halogenix - Edits Vol. 1 - 03 San Holo - Always On My Mind (ft. James Vincent McMorrow & Yvette Young) -Halogenix Edit-',
+//   'Halogenix - Edits Vol. 1 - 04 Khruangbin - First Class -Halogenix Edit-',
+// ];
 
-// Keep track of song
-let songIndex = 1;
+// // Keep track of song
+// let songIndex = 1;
 
-// Initially load song details into DOM
+// // Initially load song details into DOM
 
-console.log(testSongs[0]);
+// console.log(testSongs[0]);
 
-loadSong(testSongs[songIndex]);
+// loadSong(testSongs[songIndex]);
 
-console.log(loadSong);
+// console.log(loadSong);
 
-// Update song details
-function loadSong(song) {
-  //title.innerText = song;
-  audio.src = `setupSongs/${song}.mp3`;
-  //audio.src.setAttribute('type', 'audio/mpeg');
-  console.log(audio.src);
-  //cover.src = `images/${song}.jpg`;
-}
+// // Update song details
+// function loadSong(song) {
+//   //title.innerText = song;
+//   audio.src = `setupSongs/${song}.mp3`;
+//   //audio.src.setAttribute('type', 'audio/mpeg');
+//   console.log(audio.src);
+//   //cover.src = `images/${song}.jpg`;
+// }
 
 // //Get All tracks
 // let trackArray = [];
@@ -83,51 +83,51 @@ function loadSong(song) {
 
 //let Playing_song = false;
 //play Track
-function playTrack() {
-  musicContainer.classList.add('play');
-  playBtn.querySelector('i.fas').classList.remove('fa-play');
-  playBtn.querySelector('i.fas').classList.add('fa-pause');
-  console.log('does this function work');
-  console.log(audio.play());
-  audio.play();
+// function playTrack() {
+//   musicContainer.classList.add('play');
+//   playBtn.querySelector('i.fas').classList.remove('fa-play');
+//   playBtn.querySelector('i.fas').classList.add('fa-pause');
+//   console.log('does this function work');
+//   console.log(audio.play());
+//   audio.play();
 
-  // Playing_song = true;
-}
+//   // Playing_song = true;
+// }
 
-//pause song
-function pauseSong() {
-  musicContainer.classList.remove('play');
-  playBtn.querySelector('i.fas').classList.add('fa-play');
-  playBtn.querySelector('i.fas').classList.remove('fa-pause');
+// //pause song
+// function pauseSong() {
+//   musicContainer.classList.remove('play');
+//   playBtn.querySelector('i.fas').classList.add('fa-play');
+//   playBtn.querySelector('i.fas').classList.remove('fa-pause');
 
-  audio.pause();
-}
+//   audio.pause();
+// }
 
-// Previous song
-function prevSong() {
-  songIndex--;
+// // Previous song
+// function prevSong() {
+//   songIndex--;
 
-  if (songIndex < 0) {
-    songIndex = testSongs.length - 1;
-  }
+//   if (songIndex < 0) {
+//     songIndex = testSongs.length - 1;
+//   }
 
-  loadSong(testSongs[songIndex]);
+//   loadSong(testSongs[songIndex]);
 
-  playTrack();
-}
+//   playTrack();
+// }
 
-// Next song
-function nextSong() {
-  songIndex++;
+// // Next song
+// function nextSong() {
+//   songIndex++;
 
-  if (songIndex > testSongs.length - 1) {
-    songIndex = 0;
-  }
+//   if (songIndex > testSongs.length - 1) {
+//     songIndex = 0;
+//   }
 
-  loadSong(testSongs[songIndex]);
+//   loadSong(testSongs[songIndex]);
 
-  playTrack();
-}
+//   playTrack();
+// }
 
 // // checking.. the song is playing or not
 // // function justplay() {
@@ -142,21 +142,21 @@ function nextSong() {
 
 //isPlaying = false;
 
-playBtn.addEventListener('click', () => {
-  let isPlaying = musicContainer.classList.contains('play');
-  console.log('play clicked');
-  playTrack();
+// playBtn.addEventListener('click', () => {
+//   let isPlaying = musicContainer.classList.contains('play');
+//   console.log('play clicked');
+//   playTrack();
 
-  if (isPlaying) {
-    pauseSong();
-  } else {
-    playTrack();
-  }
-});
+//   if (isPlaying) {
+//     pauseSong();
+//   } else {
+//     playTrack();
+//   }
+// });
 
-// Change song
-prevBtn.addEventListener('click', prevSong);
-nextBtn.addEventListener('click', nextSong);
+// // Change song
+// prevBtn.addEventListener('click', prevSong);
+// nextBtn.addEventListener('click', nextSong);
 
 //Display tracks on screen
 
@@ -188,22 +188,36 @@ nextBtn.addEventListener('click', nextSong);
 //   });
 // };
 
-// const createAudioPlayer = (track) => {
-//   // Get the track from S3
-//   Storage.get(track.key).then((result) => {
-//     // create an audio element and add a source element to it
-//     const audio = document.createElement('audio');
-//     const source = document.createElement('source');
-//     audio.appendChild(source);
-//     // add controls to the audio element
-//     // audio.setAttribute('controls', '');
-//     // add the track source and type
-//     source.setAttribute('src', result);
-//     source.setAttribute('type', 'audio/mpeg');
-//     // add the item to the page
-//     document.querySelector('.music-container').appendChild(audio);
-//   });
-// };
+const createAudioPlayer = (track) => {
+  // Get the track from S3
+  Storage.get(track.key).then((result) => {
+    // create an audio element and add a source element to it
+    const audio = document.createElement('audio');
+    const source = document.createElement('source');
+    audio.appendChild(source);
+    // add controls to the audio element
+    audio.setAttribute('controls', '');
+    // add the track source and type
+    source.setAttribute('src', result);
+    source.setAttribute('type', 'audio/mpeg');
+    // add the item to the page
+    //
+    let newListItem = document.createElement('li');
+    newListItem.innerText = track.key;
+    console.log(newListItem);
+
+    newListItem.appendChild(audio);
+
+    // console.log(audioPlayer);
+    // console.log(newListItem);
+
+    // document.querySelector('#tracks').append(newListItem);
+
+    // let audioPlayer = newListItem.appendChild(audio);
+    // console.log(audioPlayer);
+    document.querySelector('.tracklist ').append(newListItem);
+  });
+};
 
 // select the upload form we created, and listen for a submit event on it
 document.getElementById('upload-form').addEventListener('submit', (e) => {
@@ -227,17 +241,19 @@ document.getElementById('upload-form').addEventListener('submit', (e) => {
 
 //
 
-// Storage.list('')
-//   .then((result) => {
-//     result.forEach((item) => getAllTracks(item));
-//   })
-//   .catch((err) => console.error(err));
+Storage.list('')
+  .then((result) => {
+    result.forEach((item) => createAudioPlayer(item));
+  })
+  .catch((err) => console.error(err));
 
 //Correct code for tracklist
 
-// Storage.list('').then((result) => {
-//   result.forEach((item) => List(item));
-// });
+// Storage.list('')
+//   .then((result) => {
+//     result.forEach((item) => List(item));
+//   })
+//   .catch((err) => console.error(err));
 
 // Storage.list('').then((result) => {
 //   createNewAudio(

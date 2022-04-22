@@ -41,12 +41,6 @@
           </div>
         </div>
 
-        <audio
-          src="setupSongs/ukulele.mp3"
-          type="audio/mpeg"
-          id="audio"
-        ></audio>
-
         <div class="player">
           <button id="prev" class="action-btn">
             <i class="fas fa-backward" aria-hidden="true"></i>
@@ -68,7 +62,7 @@
       </div>
     </form>
 
-    <div class="tracks"></div>
+    <ul id="tracks"></ul>
 
     <script>
       let tracklist = document.querySelector('.tracklist');

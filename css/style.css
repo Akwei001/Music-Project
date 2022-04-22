@@ -23,7 +23,8 @@ body {
 }
 .music-container {
   position: relative;
-  width: 375px;
+  /* width: 375px; */
+  width: 1000px;
   height: 550px;
   border-radius: 18px;
   background: white;
@@ -61,7 +62,7 @@ body {
 .music-container .block .screen {
   position: relative;
   margin: 30px auto 0px auto;
-  width: 284px;
+  width: 900px;
   height: 230px;
   background: linear-gradient(135deg, #a5a59b, #d6d5d0);
   border-radius: 10px;
@@ -156,7 +157,7 @@ body {
 }
 
 .tracklist.active {
-  position: relative;
+  position: absolute;
   bottom: 0;
   z-index: 10;
   width: 95%;
@@ -193,8 +194,4 @@ body {
 .music-container .active {
   max-height: 100vh;
   padding: 100px 0 0 0;
-}
-
-.test {
-  background-color: aqua;
 }
