@@ -25,15 +25,12 @@ body {
   position: relative;
   /* width: 375px; */
   width: 1000px;
-  height: 550px;
+  height: 675px;
   border-radius: 18px;
   background: white;
   overflow: hidden;
   box-shadow: 0.1px 4px 8px 2px rgba(0, 0, 0.5, 0.5),
     inset 0vw 0vw 1.25vw 0.15vw;
-}
-
-.tracklist button {
 }
 
 .block .screen .nav {
@@ -46,6 +43,7 @@ body {
   border: none;
   background: none;
   text-decoration: none;
+  cursor: pointer;
   font: inherit;
   margin: 5px;
 }
@@ -63,13 +61,14 @@ body {
   position: relative;
   margin: 30px auto 0px auto;
   width: 900px;
-  height: 230px;
+  height: 575px;
   background: linear-gradient(135deg, #a5a59b, #d6d5d0);
   border-radius: 10px;
   box-shadow: inset 0px 0px 10px 2px #4d4d4d;
   font-family: 'ChicagoFont', 'Arial';
   font-size: 100%;
-  color: #484647;
+  /* color: #484647; */
+  color: black;
 }
 
 /* .music-container .block .shape {
@@ -136,8 +135,15 @@ body {
   margin: 10%;
 }
 
-#upload-form {
-  background-color: whitesmoke;
+.upload {
+  background-color: none;
+  visibility: hidden;
+}
+
+.upload.active {
+  background-color: none;
+  visibility: visible;
+  transition: 0.3s;
 }
 
 .tracklist {
@@ -147,7 +153,7 @@ body {
   z-index: 1;
   width: 100%;
   height: 100%;
-  background: white;
+  /* background: white; */
   max-height: 0px;
   overflow: hidden;
   transition: 0.5s;
@@ -160,12 +166,12 @@ body {
   position: absolute;
   bottom: 0;
   z-index: 10;
-  width: 95%;
+  width: 100%;
   height: 95%;
-
+  margin-top: 10px;
   max-height: 0px;
   overflow: scroll;
-  transition: 0.5s;
+  transition: 1s;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -175,6 +181,7 @@ body {
   position: relative;
   width: 80%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   border-radius: 10px;
@@ -182,13 +189,23 @@ body {
   cursor: pointer;
   margin: 10px;
   padding: 12px 12px 20px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   /* box-shadow: 0.1px 8px 8px 2px rgba(0, 0, 0, 0.1); */
-  background: linear-gradient(135deg, #a5a59b, #d6d5d0);
+  /* background: linear-gradient(135deg, #a5a59b, #d6d5d0); */
   border-radius: 10px;
-  box-shadow: inset 0px 0px 10px 2px #4d4d4d;
+  /* box-shadow: inset 0px 0px 10px 2px #4d4d4d; */
   font-family: 'ChicagoFont', 'Arial';
   font-size: 100%;
-  color: #484647;
+  color: black;
+}
+
+.tracklist.active::-webkit-scrollbar {
+  display: none;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: #bebeb9;
+  opacity: 100%;
 }
 
 .music-container .active {
