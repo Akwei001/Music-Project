@@ -1,7 +1,11 @@
-import Amplify, { Storage } from 'aws-amplify';
-import awsconfig from './aws-exports';
+import { Storage } from 'aws-amplify';
+import Amplify from 'aws-amplify';
 
-Amplify.configure(awsconfig);
+//import awsconfig from './aws-exports';
+
+import aws_exports from './aws-exports';
+
+Amplify.configure(aws_exports);
 
 // const musicContainer = document.getElementById('music-container');
 // const playBtn = document.getElementById('play');
