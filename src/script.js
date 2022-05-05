@@ -1,9 +1,9 @@
-// import { Storage } from 'aws-amplify';
-// import Amplify from 'aws-amplify';
+import { Storage } from 'aws-amplify';
+import Amplify from 'aws-amplify';
 
 // //import awsconfig from './aws-exports';
 
-// import aws_exports from './aws-exports';
+import aws_exports from './aws-exports';
 
 Amplify.configure(aws_exports);
 
